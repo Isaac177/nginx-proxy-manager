@@ -1,0 +1,18 @@
+services:
+  proxy_manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    container_name: nginx-proxy-manager
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    volumes:
+      - ./.docker/proxy_data:/data
+      - ./.docker/letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy_network
+
+networks:
+  proxy_network:
+    external: true    # Changed this to use the external network
