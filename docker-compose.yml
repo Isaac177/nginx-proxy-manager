@@ -15,4 +15,4 @@ services:
 
 networks:
   proxy_network:
-    external: true    # Changed this to use the external network
+    external: false
